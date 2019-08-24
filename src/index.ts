@@ -1,6 +1,70 @@
-export const sum = (a: number, b: number) => {
-  if ('development' === process.env.NODE_ENV) {
-    console.log('boop');
+import fs from 'fs'
+import path from 'path'
+import process from 'process'
+
+// import axios from 'axios'
+
+// // FIXME: token needs a better way to be defined
+// const NULLSERVE_TOKEN = process.env.NULLSERVE_TOKEN
+
+async function main() {
+  const {directory} = parseArgs()
+  console.log(`dir: ${directory}`)
+  const absolutePath = path.resolve(process.cwd(), directory)
+  console.log(`${absolutePath}`)
+  console.log(walkDirSync(absolutePath))
+  return
+}
+
+function walkDirSync(dir: string): string[] {
+  return fs
+    .readdirSync(dir)
+    .flatMap(file =>
+      fs.statSync(path.join(dir, file)).isDirectory()
+        ? walkDirSync(path.join(dir, file))
+        : [path.join(dir, file)],
+    )
+}
+
+// interface GetPresignedUrlParams {
+//   uploadId: string
+//   relativeFileName: string
+// }
+// async function getPresignedUrl({
+//   uploadId,
+//   relativeFileName,
+// }: GetPresignedUrlParams): Promise<string> {
+//   return await axios.post(
+//     `https://api.nullserve.com/uploads/${uploadId}`,
+//     {
+//       relativeFileName,
+//     },
+//     {headers: {Authorization: `Bearer ${NULLSERVE_TOKEN}`}},
+//   )
+// }
+
+// interface UploadFileParams {
+//   presignedUrl: string
+//   file: File
+// }
+// async function uploadFile({
+//   presignedUrl,
+//   file,
+// }: UploadFileParams): Promise<void> {
+//   await axios.post(presignedUrl, file)
+// }
+
+interface Args {
+  directory: string
+}
+function parseArgs(): Args {
+  if (process.argv.length < 3) {
+    throw new Error('Not enough arguments. Specify a path')
   }
-  return a + b;
-};
+  console.log(process.argv)
+  return {directory: process.argv[2]}
+}
+
+;(async () => {
+  return await main()
+})()
