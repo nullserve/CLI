@@ -2,17 +2,24 @@ import fs from 'fs'
 import path from 'path'
 import process from 'process'
 
-// import axios from 'axios'
+import axios from 'axios'
 
-// // FIXME: token needs a better way to be defined
-// const NULLSERVE_TOKEN = process.env.NULLSERVE_TOKEN
+// FIXME: token needs a better way to be defined
+const NULLSERVE_TOKEN = process.env.NULLSERVE_TOKEN
 
 async function main() {
   const {directory} = parseArgs()
   console.log(`dir: ${directory}`)
   const absolutePath = path.resolve(process.cwd(), directory)
   console.log(`${absolutePath}`)
-  console.log(walkDirSync(absolutePath))
+  const files = walkDirSync(absolutePath)
+  const relFiles = files.map(file => path.relative(directory, file))
+  if (process.env.FIRE) {
+    getPresignedUrl({uploadId: '1', relativeFileName: '1'})
+    uploadFile({presignedUrl: '1', file: new File([], '')})
+  }
+  console.log(files)
+  console.log(relFiles)
   return
 }
 
@@ -26,33 +33,33 @@ function walkDirSync(dir: string): string[] {
     )
 }
 
-// interface GetPresignedUrlParams {
-//   uploadId: string
-//   relativeFileName: string
-// }
-// async function getPresignedUrl({
-//   uploadId,
-//   relativeFileName,
-// }: GetPresignedUrlParams): Promise<string> {
-//   return await axios.post(
-//     `https://api.nullserve.com/uploads/${uploadId}`,
-//     {
-//       relativeFileName,
-//     },
-//     {headers: {Authorization: `Bearer ${NULLSERVE_TOKEN}`}},
-//   )
-// }
+interface GetPresignedUrlParams {
+  uploadId: string
+  relativeFileName: string
+}
+async function getPresignedUrl({
+  uploadId,
+  relativeFileName,
+}: GetPresignedUrlParams): Promise<string> {
+  return await axios.post(
+    `https://api.nullserve.com/uploads/${uploadId}`,
+    {
+      relativeFileName,
+    },
+    {headers: {Authorization: `Bearer ${NULLSERVE_TOKEN}`}},
+  )
+}
 
-// interface UploadFileParams {
-//   presignedUrl: string
-//   file: File
-// }
-// async function uploadFile({
-//   presignedUrl,
-//   file,
-// }: UploadFileParams): Promise<void> {
-//   await axios.post(presignedUrl, file)
-// }
+interface UploadFileParams {
+  presignedUrl: string
+  file: File
+}
+async function uploadFile({
+  presignedUrl,
+  file,
+}: UploadFileParams): Promise<void> {
+  await axios.post(presignedUrl, file)
+}
 
 interface Args {
   directory: string
