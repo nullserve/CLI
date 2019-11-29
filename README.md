@@ -1,27 +1,78 @@
-# TSDX Bootstrap
+# nullserve-cli
 
-This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
+Command line tool to interact with the NullServe API
 
-## Local Development
+[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![Version](https://img.shields.io/npm/v/nullserve-cli.svg)](https://npmjs.org/package/nullserve-cli)
+[![Downloads/week](https://img.shields.io/npm/dw/nullserve-cli.svg)](https://npmjs.org/package/nullserve-cli)
+[![License](https://img.shields.io/npm/l/nullserve-cli.svg)](https://github.com/nullserve/nullserve-cli/blob/master/package.json)
 
-Below is a list of commands you will probably find useful.
+<!-- toc -->
 
-### `npm start` or `yarn start`
+- [Usage](#usage)
+- [Commands](#commands)
+  <!-- tocstop -->
 
-Runs the project in development/watch mode. Your project will be rebuilt upon changes. TSDX has a special logger for you convenience. Error messages are pretty printed and formatted for compatibility VS Code's Problems tab.
+# Usage
 
-<img src="https://user-images.githubusercontent.com/4060187/52168303-574d3a00-26f6-11e9-9f3b-71dbec9ebfcb.gif" width="600" />
+<!-- usage -->
 
-Your library will be rebuilt if you make edits.
+```sh-session
+$ npm install -g nullserve-cli
+$ nullserve-cli COMMAND
+running command...
+$ nullserve-cli (-v|--version|version)
+nullserve-cli/0.0.0 darwin-x64 node-v11.15.0
+$ nullserve-cli --help [COMMAND]
+USAGE
+  $ nullserve-cli COMMAND
+...
+```
 
-### `npm run build` or `yarn build`
+<!-- usagestop -->
 
-Bundles the package to the `dist` folder.
-The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).
+# Commands
 
-<img src="https://user-images.githubusercontent.com/4060187/52168322-a98e5b00-26f6-11e9-8cf6-222d716b75ef.gif" width="600" />
+<!-- commands -->
 
-### `npm test` or `yarn test`
+- [`nullserve-cli hello [FILE]`](#nullserve-cli-hello-file)
+- [`nullserve-cli help [COMMAND]`](#nullserve-cli-help-command)
 
-Runs the test watcher (Jest) in an interactive mode.
-By default, runs tests related to files changed since the last commit.
+## `nullserve-cli hello [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ nullserve-cli hello [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+
+EXAMPLE
+  $ nullserve-cli hello
+  hello world from ./src/hello.ts!
+```
+
+_See code: [src/commands/hello.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.0/src/commands/hello.ts)_
+
+## `nullserve-cli help [COMMAND]`
+
+display help for nullserve-cli
+
+```
+USAGE
+  $ nullserve-cli help [COMMAND]
+
+ARGUMENTS
+  COMMAND  command to show help for
+
+OPTIONS
+  --all  see all commands in CLI
+```
+
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.1/src/commands/help.ts)_
+
+<!-- commandsstop -->

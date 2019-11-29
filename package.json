@@ -1,39 +1,70 @@
 {
+  "author": "David J. Felix @DavidJFelix",
+  "bin": {
+    "nullserve": "./bin/run"
+  },
+  "bugs": "https://github.com/nullserve/nullserve-cli/issues",
+  "description": "Command line tool to interact with the NullServe API",
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "name": "nullserve-cli",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "main": "dist/index.js",
   "module": "dist/nullserve-cli.esm.js",
   "typings": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "types": "dist/index.d.ts",
+  "repository": "nullserve/nullserve-cli",
   "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "nullserve": "node dist/index.js"
+    "version": "oclif-dev readme && git add README.md"
   },
-  "bin": {
-    "nullserve": "node dist/index.js"
-  },
-  "peerDependencies": {},
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/nullserve/nullserve-cli",
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
   },
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "nullserve-cli",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
   "license": "Apache-2.0",
   "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "@types/node": "^10",
     "@types/jest": "^24.0.23",
+    "eslint": "^5.13",
+    "eslint-config-oclif": "^3.1",
+    "eslint-config-oclif-typescript": "^0.1",
+    "globby": "^10",
     "husky": "^3.1.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
+    "ts-node": "^8",
     "tsdx": "^0.11.0",
-    "tslib": "^1.10.0",
     "typescript": "^3.7.2"
   },
   "dependencies": {
-    "axios": "^0.19.0"
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^2",
+    "axios": "^0.19.0",
+    "tslib": "^1"
   }
 }

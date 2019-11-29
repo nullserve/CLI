@@ -5,3 +5,9 @@ node_modules
 .rts2_cache_esm
 .rts2_cache_umd
 dist
+*-debug.log
+*-error.log
+/dist
+/package-lock.json
+/tmp
+node_modules

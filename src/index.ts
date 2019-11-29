@@ -75,3 +75,5 @@ function parseArgs(): Args {
 ;(async () => {
   return await main()
 })()
+
+export {run} from '@oclif/command'
