@@ -1,31 +1,14 @@
 {
-  "include": ["src", "types"],
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "target": "es2017",
-    "module": "esnext",
-    "lib": ["dom", "esnext"],
-    "importHelpers": true,
     "declaration": true,
-    "sourceMap": true,
-    "rootDir": "./",
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "outDir": "dist",
+    "rootDir": "src",
     "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
-    "baseUrl": "./",
-    "paths": {
-      "*": ["src/*", "node_modules/*"]
-    },
-    "jsx": "react",
-    "esModuleInterop": true
-  }
+    "target": "es2017",
+    "lib": ["esnext", "dom"]
+  },
+  "include": ["src/**/*"]
 }

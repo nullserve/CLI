@@ -16,7 +16,6 @@ async function main() {
   const relFiles = files.map(file => path.relative(directory, file))
   if (process.env.FIRE) {
     getPresignedUrl({uploadId: '1', relativeFileName: '1'})
-    uploadFile({presignedUrl: '1', file: new File([], '')})
   }
   console.log(files)
   console.log(relFiles)
@@ -52,7 +51,7 @@ async function getPresignedUrl({
 
 interface UploadFileParams {
   presignedUrl: string
-  file: File
+  file: Buffer
 }
 async function uploadFile({
   presignedUrl,

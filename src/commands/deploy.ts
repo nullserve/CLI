@@ -1,13 +1,9 @@
 import {Command, flags} from '@oclif/command'
 
-export default class Hello extends Command {
-  static description = 'describe the command here'
+export default class Deploy extends Command {
+  static description = 'deploy to nullserve'
 
-  static examples = [
-    `$ nullserve-cli hello
-hello world from ./src/hello.ts!
-`,
-  ]
+  static examples = [`$ nullserve deploy`]
 
   static flags = {
     help: flags.help({char: 'h'}),
@@ -20,7 +16,7 @@ hello world from ./src/hello.ts!
   static args = [{name: 'file'}]
 
   async run() {
-    const {args, flags} = this.parse(Hello)
+    const {args, flags} = this.parse(Deploy)
 
     const name = flags.name || 'world'
     this.log(`hello ${name} from ./src/commands/hello.ts`)

@@ -4,26 +4,30 @@
     "nullserve": "./bin/run"
   },
   "bugs": "https://github.com/nullserve/nullserve-cli/issues",
+  "dependencies": {
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^2",
+    "axios": "^0.19.0",
+    "tslib": "^1"
+  },
   "description": "Command line tool to interact with the NullServe API",
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "@types/jest": "^24.0.23",
+    "@types/node": "^10",
+    "eslint": "^5.13",
+    "eslint-config-oclif": "^3.1",
+    "eslint-config-oclif-typescript": "^0.1",
+    "globby": "^10",
+    "husky": "^3.1.0",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "ts-node": "^8",
+    "typescript": "^3.3"
+  },
   "engines": {
     "node": ">=8.0.0"
-  },
-  "name": "nullserve-cli",
-  "version": "0.0.0",
-  "main": "dist/index.js",
-  "module": "dist/nullserve-cli.esm.js",
-  "typings": "dist/index.d.ts",
-  "types": "dist/index.d.ts",
-  "repository": "nullserve/nullserve-cli",
-  "scripts": {
-    "postpack": "rm -f oclif.manifest.json",
-    "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "version": "oclif-dev readme && git add README.md"
   },
   "files": [
     "/bin",
@@ -37,6 +41,12 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
+  "keywords": [
+    "oclif"
+  ],
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "name": "@nullserve/cli",
   "oclif": {
     "commands": "./lib/commands",
     "bin": "nullserve-cli",
@@ -44,27 +54,15 @@
       "@oclif/plugin-help"
     ]
   },
-  "license": "Apache-2.0",
-  "devDependencies": {
-    "@oclif/dev-cli": "^1",
-    "@types/node": "^10",
-    "@types/jest": "^24.0.23",
-    "eslint": "^5.13",
-    "eslint-config-oclif": "^3.1",
-    "eslint-config-oclif-typescript": "^0.1",
-    "globby": "^10",
-    "husky": "^3.1.0",
-    "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1",
-    "ts-node": "^8",
-    "tsdx": "^0.11.0",
-    "typescript": "^3.7.2"
+  "repository": "nullserve/nullserve-cli",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
   },
-  "dependencies": {
-    "@oclif/command": "^1",
-    "@oclif/config": "^1",
-    "@oclif/plugin-help": "^2",
-    "axios": "^0.19.0",
-    "tslib": "^1"
-  }
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "version": "0.0.0"
 }
