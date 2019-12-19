@@ -14,7 +14,7 @@
   "description": "Command line tool to interact with the NullServe API",
   "devDependencies": {
     "@oclif/dev-cli": "^1",
-    "@types/jest": "^24.0.23",
+    "@types/jest": "^24.0.24",
     "@types/node": "^10",
     "eslint": "^5.13",
     "eslint-config-oclif": "^3.1",
