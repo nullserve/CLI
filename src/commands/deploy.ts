@@ -91,7 +91,6 @@ export default class Deploy extends Command {
     )
     const uploadUrls = ((getFileUploadUrls as AxiosResponse)
       .data as GetFileUploadUrlsResponse).data.siteDeployment.uploadUrls
-    console.log(uploadUrls)
     await Promise.all([
       uploadUrls.map(({url, fileName}) => {
         const absolutePath = fileMap[fileName]
