@@ -55,6 +55,7 @@
       "@oclif/plugin-help"
     ]
   },
+  "private": false,
   "repository": "nullserve/nullserve-cli",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",

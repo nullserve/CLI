@@ -9,6 +9,7 @@ Command line tool to interact with the NullServe API
 
 <!-- toc -->
 
+- [nullserve-cli](#nullserve-cli)
 - [Usage](#usage)
 - [Commands](#commands)
   <!-- tocstop -->
@@ -18,11 +19,11 @@ Command line tool to interact with the NullServe API
 <!-- usage -->
 
 ```sh-session
-$ npm install -g nullserve-cli
+$ npm install -g @nullserve/cli
 $ nullserve-cli COMMAND
 running command...
 $ nullserve-cli (-v|--version|version)
-nullserve-cli/0.0.0 darwin-x64 node-v11.15.0
+@nullserve/cli/0.0.0 darwin-x64 node-v11.15.0
 $ nullserve-cli --help [COMMAND]
 USAGE
   $ nullserve-cli COMMAND
@@ -35,28 +36,28 @@ USAGE
 
 <!-- commands -->
 
-- [`nullserve-cli hello [FILE]`](#nullserve-cli-hello-file)
+- [`nullserve-cli deploy DIRECTORY`](#nullserve-cli-deploy-directory)
 - [`nullserve-cli help [COMMAND]`](#nullserve-cli-help-command)
 
-## `nullserve-cli hello [FILE]`
+## `nullserve-cli deploy DIRECTORY`
 
-describe the command here
+deploy to nullserve
 
 ```
 USAGE
-  $ nullserve-cli hello [FILE]
+  $ nullserve-cli deploy DIRECTORY
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -a, --token=token            the api token used to deploy
+  -d, --deployment=deployment  the deployment id to use (skips deployment creation)
+  -h, --help                   show CLI help
+  -s, --site-slug=site-slug    (required) the site that is being deployed to
 
 EXAMPLE
-  $ nullserve-cli hello
-  hello world from ./src/hello.ts!
+  $ nullserve deploy
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/deploy.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.0/src/commands/deploy.ts)_
 
 ## `nullserve-cli help [COMMAND]`
 
