@@ -20,13 +20,13 @@ Command line tool to interact with the NullServe API
 
 ```sh-session
 $ npm install -g @nullserve/cli
-$ nullserve-cli COMMAND
+$ nullserve COMMAND
 running command...
-$ nullserve-cli (-v|--version|version)
-@nullserve/cli/0.0.0 darwin-x64 node-v11.15.0
-$ nullserve-cli --help [COMMAND]
+$ nullserve (-v|--version|version)
+@nullserve/cli/0.0.2 darwin-x64 node-v11.15.0
+$ nullserve --help [COMMAND]
 USAGE
-  $ nullserve-cli COMMAND
+  $ nullserve COMMAND
 ...
 ```
 
@@ -36,16 +36,16 @@ USAGE
 
 <!-- commands -->
 
-- [`nullserve-cli deploy DIRECTORY`](#nullserve-cli-deploy-directory)
-- [`nullserve-cli help [COMMAND]`](#nullserve-cli-help-command)
+- [`nullserve deploy DIRECTORY`](#nullserve-deploy-directory)
+- [`nullserve help [COMMAND]`](#nullserve-help-command)
 
-## `nullserve-cli deploy DIRECTORY`
+## `nullserve deploy DIRECTORY`
 
 deploy to nullserve
 
 ```
 USAGE
-  $ nullserve-cli deploy DIRECTORY
+  $ nullserve deploy DIRECTORY
 
 OPTIONS
   -a, --token=token            the api token used to deploy
@@ -57,15 +57,15 @@ EXAMPLE
   $ nullserve deploy
 ```
 
-_See code: [src/commands/deploy.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.0/src/commands/deploy.ts)_
+_See code: [src/commands/deploy.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.2/src/commands/deploy.ts)_
 
-## `nullserve-cli help [COMMAND]`
+## `nullserve help [COMMAND]`
 
-display help for nullserve-cli
+display help for nullserve
 
 ```
 USAGE
-  $ nullserve-cli help [COMMAND]
+  $ nullserve help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
