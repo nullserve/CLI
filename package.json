@@ -9,7 +9,7 @@
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^2",
     "axios": "^0.19.1",
-    "file-type": "^13.1.0",
+    "file-type": "^14.0.0",
     "tslib": "^1"
   },
   "description": "Command line tool to interact with the NullServe API",
