@@ -38,11 +38,6 @@
     "/oclif.manifest.json"
   ],
   "homepage": "https://github.com/nullserve/nullserve-cli",
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
   "keywords": [
     "oclif"
   ],
@@ -67,5 +62,5 @@
   },
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
-  "version": "0.0.3"
+  "version": "0.0.4"
 }

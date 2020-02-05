@@ -35,6 +35,7 @@ export default class Deploy extends Command {
       char: 'a',
       description: 'the api token used to deploy',
       env: 'NULLSERVE_API_TOKEN',
+      required: true,
     }),
     'site-slug': flags.string({
       char: 's',
@@ -97,6 +98,14 @@ export default class Deploy extends Command {
         return uploadFile(url, absolutePath)
       }),
     ])
+
+    await axios.post(
+      `https://api.nullserve.com/graph`,
+      {
+        query: `mutation {updateCurrentSiteDeployment(siteSlug: "${flags['site-slug']}", siteDeploymentId: "${deploymentId}")}`,
+      },
+      {headers: {Authorization: `Bearer ${flags.token}`}},
+    )
   }
 }
 
@@ -111,11 +120,12 @@ function walkDirSync(dir: string): string[] {
 }
 
 async function uploadFile(url: string, absolutePath: string) {
+  const contentType =
+    mime.contentType(path.extname(absolutePath)) || 'application/octet-stream'
+  console.log(`Uploading: [${absolutePath}] as [${contentType}]`)
   await axios.put(url, fs.readFileSync(absolutePath), {
     headers: {
-      'Content-Type':
-        mime.contentType(path.extname(absolutePath)) ||
-        'application/octet-stream',
+      'Content-Type': contentType,
     },
   })
 }

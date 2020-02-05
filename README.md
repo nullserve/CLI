@@ -8,16 +8,14 @@ Command line tool to interact with the NullServe API
 [![License](https://img.shields.io/npm/l/nullserve-cli.svg)](https://github.com/nullserve/nullserve-cli/blob/master/package.json)
 
 <!-- toc -->
-
-- [nullserve-cli](#nullserve-cli)
-- [Usage](#usage)
-- [Commands](#commands)
-  <!-- tocstop -->
+* [nullserve-cli](#nullserve-cli)
+* [Usage](#usage)
+* [Commands](#commands)
+<!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g @nullserve/cli
 $ nullserve COMMAND
@@ -29,15 +27,13 @@ USAGE
   $ nullserve COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-
-- [`nullserve deploy DIRECTORY`](#nullserve-deploy-directory)
-- [`nullserve help [COMMAND]`](#nullserve-help-command)
+* [`nullserve deploy DIRECTORY`](#nullserve-deploy-directory)
+* [`nullserve help [COMMAND]`](#nullserve-help-command)
 
 ## `nullserve deploy DIRECTORY`
 
@@ -75,5 +71,4 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.1/src/commands/help.ts)_
-
 <!-- commandsstop -->
