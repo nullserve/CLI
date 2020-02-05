@@ -21,7 +21,7 @@ $ npm install -g @nullserve/cli
 $ nullserve COMMAND
 running command...
 $ nullserve (-v|--version|version)
-@nullserve/cli/0.0.3 darwin-x64 node-v11.15.0
+@nullserve/cli/0.0.4 darwin-x64 node-v11.15.0
 $ nullserve --help [COMMAND]
 USAGE
   $ nullserve COMMAND
@@ -44,7 +44,7 @@ USAGE
   $ nullserve deploy DIRECTORY
 
 OPTIONS
-  -a, --token=token            the api token used to deploy
+  -a, --token=token            (required) the api token used to deploy
   -d, --deployment=deployment  the deployment id to use (skips deployment creation)
   -h, --help                   show CLI help
   -s, --site-slug=site-slug    (required) the site that is being deployed to
@@ -53,7 +53,7 @@ EXAMPLE
   $ nullserve deploy
 ```
 
-_See code: [src/commands/deploy.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.3/src/commands/deploy.ts)_
+_See code: [src/commands/deploy.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.4/src/commands/deploy.ts)_
 
 ## `nullserve help [COMMAND]`
 
