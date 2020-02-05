@@ -3,7 +3,7 @@ import path from 'path'
 import process from 'process'
 import {Command, flags} from '@oclif/command'
 import axios, {AxiosResponse} from 'axios'
-import {fromFile} from 'file-type'
+import mime from 'mime-types'
 
 interface CreateSiteDeploymentResponse {
   data: {
@@ -111,17 +111,11 @@ function walkDirSync(dir: string): string[] {
 }
 
 async function uploadFile(url: string, absolutePath: string) {
-  const fileType = await fromFile(absolutePath)
-
   await axios.put(url, fs.readFileSync(absolutePath), {
     headers: {
-      ...(fileType && fileType.mime
-        ? {
-            'content-type': fileType.mime,
-          }
-        : {
-            'Content-Type': 'application/octet-stream',
-          }),
+      'Content-Type':
+        mime.contentType(path.extname(absolutePath)) ||
+        'application/octet-stream',
     },
   })
 }

@@ -9,13 +9,14 @@
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^2",
     "axios": "^0.19.1",
-    "file-type": "^13.1.0",
+    "mime-types": "^2.1.26",
     "tslib": "^1"
   },
   "description": "Command line tool to interact with the NullServe API",
   "devDependencies": {
     "@oclif/dev-cli": "^1",
     "@types/jest": "^24.0.23",
+    "@types/mime-types": "^2.1.0",
     "@types/node": "^10",
     "eslint": "^5.13",
     "eslint-config-oclif": "^3.1",
@@ -66,5 +67,5 @@
   },
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
