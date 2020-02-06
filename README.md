@@ -2,10 +2,10 @@
 
 Command line tool to interact with the NullServe API
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/@nullserve/cli.svg)](https://npmjs.org/package/nullserve-cli)
-[![Downloads/week](https://img.shields.io/npm/dw/@nullserve/cli.svg)](https://npmjs.org/package/nullserve-cli)
-[![License](https://img.shields.io/npm/l/@nullserve/cli.svg)](https://github.com/nullserve/nullserve-cli/blob/master/package.json)
+[![oclif](https://img.shields.io/badge/cli-oclif-informational.svg?style=for-the-badge)](https://oclif.io)
+[![Version](https://img.shields.io/npm/v/@nullserve/cli.svg?style=for-the-badge&logo=npm)](https://npmjs.org/package/nullserve-cli)
+[![Downloads/week](https://img.shields.io/npm/dw/@nullserve/cli.svg?style=for-the-badge&logo=npm)](https://npmjs.org/package/nullserve-cli)
+[![License](https://img.shields.io/npm/l/@nullserve/cli.svg?style=for-the-badge&logo=apache)](https://github.com/nullserve/nullserve-cli/blob/master/package.json)
 
 <!-- prettier-ignore-start -->
 <!-- toc -->
