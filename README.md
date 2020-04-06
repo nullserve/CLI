@@ -24,7 +24,7 @@ $ npm install -g @nullserve/cli
 $ nullserve COMMAND
 running command...
 $ nullserve (-v|--version|version)
-@nullserve/cli/0.0.4 darwin-x64 node-v11.15.0
+@nullserve/cli/0.0.4 darwin-x64 node-v13.11.0
 $ nullserve --help [COMMAND]
 USAGE
   $ nullserve COMMAND
@@ -39,6 +39,7 @@ USAGE
 <!-- commands -->
 * [`nullserve deploy DIRECTORY`](#nullserve-deploy-directory)
 * [`nullserve help [COMMAND]`](#nullserve-help-command)
+* [`nullserve init`](#nullserve-init)
 
 ## `nullserve deploy DIRECTORY`
 
@@ -75,6 +76,23 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.1/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.3/src/commands/help.ts)_
+
+## `nullserve init`
+
+init a nullserve project
+
+```
+USAGE
+  $ nullserve init
+
+OPTIONS
+  -h, --help  show CLI help
+
+EXAMPLE
+  $ nullserve init
+```
+
+_See code: [src/commands/init.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.4/src/commands/init.ts)_
 <!-- commandsstop -->
 <!-- prettier-ignore-end -->
