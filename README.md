@@ -40,6 +40,7 @@ USAGE
 * [`nullserve deploy DIRECTORY`](#nullserve-deploy-directory)
 * [`nullserve help [COMMAND]`](#nullserve-help-command)
 * [`nullserve init`](#nullserve-init)
+* [`nullserve login [FILE]`](#nullserve-login-file)
 
 ## `nullserve deploy DIRECTORY`
 
@@ -94,5 +95,21 @@ EXAMPLE
 ```
 
 _See code: [src/commands/init.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.4/src/commands/init.ts)_
+
+## `nullserve login [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ nullserve login [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/login.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.4/src/commands/login.ts)_
 <!-- commandsstop -->
 <!-- prettier-ignore-end -->

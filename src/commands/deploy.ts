@@ -35,7 +35,7 @@ export default class Deploy extends Command {
       char: 'a',
       description: 'the api token used to deploy',
       env: 'NULLSERVE_API_TOKEN',
-      required: true,
+      required: false,
     }),
     'site-slug': flags.string({
       char: 's',
