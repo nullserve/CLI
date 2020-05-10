@@ -21,7 +21,7 @@
     "@types/inquirer": "^6.5.0",
     "@types/jest": "^24.0.23",
     "@types/mime-types": "^2.1.0",
-    "@types/node": "^10",
+    "@types/node": "^13",
     "@types/puppeteer": "^2.0.1",
     "@types/yup": "^0.28.1",
     "eslint": "^5.13",
