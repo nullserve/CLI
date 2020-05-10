@@ -1,7 +1,8 @@
 import {Command, flags} from '@oclif/command'
-import {existsSync, mkdirSync, writeFileSync, readFileSync, exists} from 'fs'
+import {existsSync, mkdirSync, writeFileSync, readFileSync} from 'fs'
 import {prompt} from 'inquirer'
-import axios, {AxiosResponse} from 'axios'
+import axios from 'axios'
+import * as Yup from 'yup'
 
 import {Config} from '../config'
 
@@ -48,7 +49,7 @@ export default class Init extends Command {
       userConfig = {}
     }
 
-    let promptResponses = await prompt([
+    const promptResponses1 = await prompt([
       {
         name: 'shouldCreateProject',
         message: 'Create a new NullServe project?',
@@ -61,11 +62,11 @@ export default class Init extends Command {
         ],
       },
     ])
-    if (promptResponses.shouldCreateProject === 'cancel') {
+    if (promptResponses1.shouldCreateProject === 'cancel') {
       console.log('Cancelled init.')
       return
     }
-    const shouldCreateProject = promptResponses.shouldCreateProject === 'yes'
+    const shouldCreateProject = promptResponses1.shouldCreateProject === 'yes'
     let apiToken: string
 
     if (flags.token !== undefined && flags.token !== null) {
@@ -92,10 +93,104 @@ export default class Init extends Command {
     }
 
     if (shouldCreateProject) {
+      let urlSlug: string
+
+      if (flags['site-slug'] !== undefined && flags['site-slug'] !== null) {
+        urlSlug = flags['site-slug']
+      } else {
+        let promptResponses2 = await prompt([
+          {
+            name: 'urlSlug',
+            message: 'What is the name of the site?',
+            type: 'input',
+            validate: input => {
+              const schema = Yup.string()
+                .required('URL slug is required')
+                .min(4, 'URL slug must be at least 4 characters')
+                .max(48, 'URL slug must be shorter than 48 characters')
+                .notOneOf(
+                  [
+                    'account',
+                    'accounts',
+                    'api',
+                    'apis',
+                    'apitokens',
+                    'api-tokens',
+                    'app',
+                    'apps',
+                    'auth',
+                    'authentication',
+                    'authentications',
+                    'authorization',
+                    'authorizations',
+                    'authn',
+                    'auths',
+                    'authz',
+                    'cloud',
+                    'clouds',
+                    'dashboard',
+                    'dashboards',
+                    'db',
+                    'dbs',
+                    'database',
+                    'databases',
+                    'dns',
+                    'docs',
+                    'domain',
+                    'domains',
+                    'firewall',
+                    'firewalls',
+                    'fqdn',
+                    'fqdns',
+                    'integration',
+                    'integrations',
+                    'limit',
+                    'limits',
+                    'organization',
+                    'organizations',
+                    'pass',
+                    'password',
+                    'passwords',
+                    'project',
+                    'projects',
+                    'quota',
+                    'quotas',
+                    'service',
+                    'services',
+                    'site',
+                    'sites',
+                    'team',
+                    'teams',
+                    'user',
+                    'users',
+                    'websocket',
+                    'websockets',
+                    'wsapi',
+                    'wsapis',
+                    'wss',
+                  ],
+                  'URL slug may not be a reserved word.',
+                )
+                .matches(
+                  /^([A-Za-z\d])([A-Za-z\d-])+([A-Za-z\d])$/,
+                  'URL slug must contain only letters a-z, numbers, and hyphens. It may not start or end with hyphens.',
+                )
+              try {
+                schema.validateSync(input)
+                return true
+              } catch (e) {
+                return e.message
+              }
+            },
+          },
+        ])
+        urlSlug = promptResponses2.urlSlug
+      }
+
       const createSite = await axios.post(
         `https://api.nullserve.com/graph`,
         {
-          query: `mutation {createSite(urlSlug: "${flags['site-slug']}") {urlSlug}}`,
+          query: `mutation {createSite(urlSlug: "${urlSlug}") {urlSlug}}`,
           variables: {},
         },
         {headers: {Authorization: `Bearer ${apiToken}`}},
