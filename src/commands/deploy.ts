@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs, {readFileSync} from 'fs'
 import path from 'path'
 import process from 'process'
 import {Command, flags} from '@oclif/command'
@@ -81,22 +81,23 @@ export default class Deploy extends Command {
     const getFileUploadUrls = await axios.post(
       `https://api.nullserve.com/graph`,
       {
-        query: `query {siteDeployment(id: "${deploymentId}") {uploadUrls(fileNames: [${Object.keys(
-          fileMap,
-        )
+        query: `query {siteDeployment(id: "${deploymentId}") {uploadUrls(fileNames: [".well-known/nullserve.json"${
+          Object.keys(fileMap).length > 0 ? ',' : ''
+        }${Object.keys(fileMap)
           .map(fileName => `"${fileName}"`)
           .join(',')}]) {url, fileName}}}`,
         variables: {},
       },
       {headers: {Authorization: `Bearer ${flags.token}`}},
     )
-    const uploadUrls = ((getFileUploadUrls as AxiosResponse)
+    const [manifestUrl, ...uploadUrls] = ((getFileUploadUrls as AxiosResponse)
       .data as GetFileUploadUrlsResponse).data.siteDeployment.uploadUrls
     await Promise.all([
       uploadUrls.map(({url, fileName}) => {
         const absolutePath = fileMap[fileName]
         return uploadFile(url, absolutePath)
       }),
+      uploadManifest(manifestUrl.url, fileMap),
     ])
 
     await axios.post(
@@ -117,6 +118,14 @@ function walkDirSync(dir: string): string[] {
         ? walkDirSync(path.join(dir, file))
         : [path.join(dir, file)],
     )
+}
+
+async function uploadManifest(url: string, fileMap: Record<string, string>) {
+  const config = JSON.parse(fs.readFileSync(process.cwd(), {encoding: 'utf-8'}))
+  config.manifest = Object.keys(fileMap)
+  await axios.put(url, JSON.stringify(config), {
+    headers: {'Content-Type': 'application/json'},
+  })
 }
 
 async function uploadFile(url: string, absolutePath: string) {
