@@ -24,7 +24,7 @@ $ npm install -g @nullserve/cli
 $ nullserve COMMAND
 running command...
 $ nullserve (-v|--version|version)
-@nullserve/cli/0.0.5 darwin-x64 node-v13.11.0
+@nullserve/cli/0.0.6 darwin-x64 node-v13.11.0
 $ nullserve --help [COMMAND]
 USAGE
   $ nullserve COMMAND
@@ -60,7 +60,7 @@ EXAMPLE
   $ nullserve deploy
 ```
 
-_See code: [src/commands/deploy.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.5/src/commands/deploy.ts)_
+_See code: [src/commands/deploy.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.6/src/commands/deploy.ts)_
 
 ## `nullserve help [COMMAND]`
 
@@ -96,7 +96,7 @@ EXAMPLE
   $ nullserve init
 ```
 
-_See code: [src/commands/init.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.5/src/commands/init.ts)_
+_See code: [src/commands/init.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.6/src/commands/init.ts)_
 
 ## `nullserve login [FILE]`
 
@@ -112,6 +112,6 @@ OPTIONS
   -n, --name=name  name to print
 ```
 
-_See code: [src/commands/login.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.5/src/commands/login.ts)_
+_See code: [src/commands/login.ts](https://github.com/nullserve/nullserve-cli/blob/v0.0.6/src/commands/login.ts)_
 <!-- commandsstop -->
 <!-- prettier-ignore-end -->
