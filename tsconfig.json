@@ -8,8 +8,7 @@
     "rootDir": "src",
     "strict": true,
     "target": "es2017",
-    "lib": ["esnext"]
+    "lib": ["esnext", "DOM"]
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules/*"]
+  "include": ["src/**/*"]
 }
