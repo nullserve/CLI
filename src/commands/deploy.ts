@@ -121,7 +121,11 @@ function walkDirSync(dir: string): string[] {
 }
 
 async function uploadManifest(url: string, fileMap: Record<string, string>) {
-  const config = JSON.parse(fs.readFileSync(process.cwd(), {encoding: 'utf-8'}))
+  const config = JSON.parse(
+    fs.readFileSync(path.resolve(process.cwd(), '.nullserve/routes.json'), {
+      encoding: 'utf-8',
+    }),
+  )
   config.manifest = Object.keys(fileMap)
   await axios.put(url, JSON.stringify(config), {
     headers: {'Content-Type': 'application/json'},
