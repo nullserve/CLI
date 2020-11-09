@@ -24,7 +24,7 @@
     "@types/node": "^10",
     "@types/puppeteer": "^2.0.1",
     "@types/yup": "^0.28.1",
-    "eslint": "^5.13",
+    "eslint": "^7.13",
     "eslint-config-oclif": "^3.1",
     "eslint-config-oclif-typescript": "^0.1",
     "globby": "^10",
